@@ -4,4 +4,4 @@
 int ValidUserInput();
 /// <summary> ѕроверка корректности даты </summary>/// <returns>Ёкземпл€р класса Date</returns>
 Date ValidDateInput();
-bool ValidFileName(std::string file_name)
+bool ValidFileName(std::string file_name);

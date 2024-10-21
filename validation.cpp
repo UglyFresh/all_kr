@@ -74,24 +74,14 @@ bool ValidFileName(const std::string file_name) {
 		"aux.txt",  "nul.txt",  "com1.txt", "com2.txt", "com3.txt", "com4.txt",
 		"com5.txt", "com6.txt", "com7.txt", "com8.txt", "com9.txt", "lpt1.txt",
 		"lpt2.txt", "lpt3.txt", "lpt4.txt", "lpt5.txt", "lpt6.txt", "lpt7.txt",
-		"lpt8.txt", "lpt9.txt", "<", ">", ":", """", "/", "\\", "|", "?", "*" };
+		"lpt8.txt", "lpt9.txt" };
 
 	for (const std::string& reserved_filename : reserved_filenames) {
 		if (file_name.find(reserved_filename) != std::string::npos) {
 			return true;
 		}
-		return false;
 	}
 
-}
-
-int main() {
-
-	std::string line = { "jvefnjven*" };
-
-	if (ValidFileName(line)) {
-		std::cout << "AAAAAAAAAAAAAAAA";
-	}
-
+	return false;
 
 }

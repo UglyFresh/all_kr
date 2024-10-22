@@ -1,5 +1,7 @@
 #pragma once
 #include <iostream>
+#include <vector>
+#include <fstream>
 
 class Date {
 
@@ -15,7 +17,7 @@ public:
 
 	int get_day() const { return day; }
 	int get_month() const { return month; }
-	int get() const { return year; }
+	int get_year() const { return year; }
 
 	void set_day(const int& new_day) { day = new_day; }
 	void set_month(const int& new_month) { month = new_month; }
@@ -38,7 +40,7 @@ public:
 
 	Files(std::string fn, int fs, Date dcf, int nfa) : file_name(fn), file_size(fs), date_of_creation_file(dcf), number_of_file_accesses(nfa){}
 
-	std::string get_fie_name() const { return file_name; }
+	std::string get_file_name() const { return file_name; }
 	int get_file_size() const { return file_size; }
 	Date get_date_of_creation_file() const { return date_of_creation_file; }
 	int get_number_of_file_accesses() const { return number_of_file_accesses; }

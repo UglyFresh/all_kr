@@ -1,6 +1,6 @@
-#include "file_handling.h"
+#include "file_handling.h" 
 
-void InputFilesInfo(std::vector <Files>& file_info) {
+void InputFilesInfo(std::vector <Files>& file_info, std::vector <Date>& _date) {
 
 	std::string _name;
 	int _size;
@@ -15,7 +15,7 @@ void InputFilesInfo(std::vector <Files>& file_info) {
 		_size = ValidUserInput();
 	}
 	std::cout << "Введите дату создания файла: ";
-	Date _date_of_creation = ValidDateInput();
+	Date _date_of_creation = ValidDateInput(_date);
 	std::cout << "Введите количество обращений к файлу: ";
 	_num_of_accesses = ValidUserInput();
 	while (_num_of_accesses < 0) {

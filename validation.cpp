@@ -13,7 +13,7 @@ int ValidUserInput() {
     
 }
 
-Date ValidDateInput() {
+Date ValidDateInput(std::vector <Date>& _date) {
 
 	int _year;
 	int _month;
@@ -59,7 +59,7 @@ Date ValidDateInput() {
 	}
 
 	Date _creation_date(_day, _month, _year);
-
+	_date.push_back(_creation_date);
 	return _creation_date;
 
 }

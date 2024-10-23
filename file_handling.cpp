@@ -59,3 +59,15 @@ void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date,
 	log_file.close();
 
 }
+
+bool IsFileEmpty(std::string file_name) {
+
+	std::ifstream file(file_name);
+
+	if (file.peek() == EOF) {
+		return false;
+	}
+	else {
+		return true;
+	}
+}

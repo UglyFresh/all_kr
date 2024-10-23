@@ -27,19 +27,14 @@ void InputFilesInfo(std::vector <Files>& file_info, std::vector <Date>& _date) {
 	file_info.push_back(files_info);
 }
 
-void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date) {
+void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date, std::string& file_name) {
 
-	std::string file_location;
-	std::cout << "Введите полный путь к файлу: ";
-	std::cin >> file_location;
-	std::string line;
-
-	while (ValidFileName(file_location)) {
+	while (ValidFileName(file_name)) {
 		std::cout << "Ошибка! Имя файла зарезервированно! Повторите попытку: ";
-		std::cin >> file_location;
+		std::cin >> file_name;
 	}
 
-	std::ofstream log_file(file_location);
+	std::ofstream log_file(file_name);
 
 	if (!log_file.is_open()) {
 		std::cout << "Ошибка открытия файла!";
@@ -58,7 +53,7 @@ void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date)
 				<< file.get_number_of_file_accesses();
 		}
 
-		std::cout << "Данные успешно сохранены в файл:\n" << file_location;
+		std::cout << "Данные успешно сохранены в файл:\n" << file_name;
 	}
 
 	log_file.close();

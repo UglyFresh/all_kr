@@ -5,6 +5,7 @@ void InputFilesInfo(std::vector <Files>& file_info, std::vector <Date>& _date) {
 	std::string _name;
 	int _size;
 	int _num_of_accesses;
+	Date _date_of_creation;
 
 	std::cout << "Введите имя файла: ";
 	std::cin >> _name;
@@ -15,7 +16,7 @@ void InputFilesInfo(std::vector <Files>& file_info, std::vector <Date>& _date) {
 		_size = ValidUserInput();
 	}
 	std::cout << "Введите дату создания файла: ";
-	Date _date_of_creation = ValidDateInput(_date);
+	_date_of_creation = ValidDateInput(_date);
 	std::cout << "Введите количество обращений к файлу: ";
 	_num_of_accesses = ValidUserInput();
 	while (_num_of_accesses < 0) {

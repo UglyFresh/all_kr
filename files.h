@@ -2,6 +2,7 @@
 #include <iostream>
 #include <vector>
 #include <fstream>
+#include <sstream>
 
 class Date {
 
@@ -13,6 +14,7 @@ private:
 
 public:
 
+	Date() = default;
 	Date(int d, int m, int y) : day(d), month(m), year(y) {}
 
 	int get_day() const { return day; }
@@ -38,6 +40,7 @@ private:
 	
 public:
 
+	Files() = default;
 	Files(std::string fn, int fs, Date dcf, int nfa) : file_name(fn), file_size(fs), date_of_creation_file(dcf), number_of_file_accesses(nfa){}
 
 	std::string get_file_name() const { return file_name; }

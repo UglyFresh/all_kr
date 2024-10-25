@@ -16,3 +16,11 @@ void SortBySize(std::vector <Files> files_info, std::vector <Files> sorted_files
 		}
 	}
 }
+
+void SortByAccesses(std::vector <Files> files_info, std::vector <Files> sorted_files_info, int min_accesses) {
+	for (const auto& file : files_info) {
+		if (file.get_number_of_file_accesses() > min_accesses) {
+			sorted_files_info.push_back(file);
+		}
+	}
+}

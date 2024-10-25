@@ -8,3 +8,11 @@ void SortByABC(std::vector <Files> files_info, std::vector <Files> sorted_files_
 			return a.get_file_name() < b.get_file_name();
 		});
 }
+
+void SortBySize(std::vector <Files> files_info, std::vector <Files> sorted_files_info, int min_size) {
+	for (const auto& file : files_info) {
+		if (file.get_file_size() > min_size) {
+			sorted_files_info.push_back(file);
+		}
+	}
+}

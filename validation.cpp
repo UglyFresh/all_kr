@@ -36,19 +36,25 @@ Date ValidDateInput(std::vector <Date>& _date) {
 	std::cout << "\nВведите день: ";
 	_day = ValidUserInput();
 
-	while (_year % 4 == 0 && _month == 2 && _day > 29 && _day < 1) {
-		std::cout << "Ошибка! в высокосный год в этом месяце не больше 29 дней! Повторите попытку: ";
-		_day = ValidUserInput();
+	if (_year % 4 == 0 && _month == 2) {
+		while (_day > 29 || _day < 1) {
+			std::cout << "Ошибка! В високосный год в этом месяце не больше 29 дней! Повторите попытку: ";
+			_day = ValidUserInput();
+		}
 	}
 
-	while (_month == 1 || _month == 3 || _month == 5 || _month == 7 || _month == 8 || _month == 10 || _month == 12 && _day > 31 || _day < 1) {
-		std::cout << "Ошибка! В этом месяце не может быть больше 31 дня! Повторите попытку: ";
-		_day = ValidUserInput();
+	if (_month == 1 || _month == 3 || _month == 5 || _month == 7 || _month == 8 || _month == 10 || _month == 12) {
+		while (_day > 31 || _day < 1) {
+			std::cout << "Ошибка! В этом месяце не может быть больше 31 дня! Повторите попытку: ";
+			_day = ValidUserInput();
+		}
 	}
 
-	while (_month == 4 || _month == 6 || _month == 9 || _month == 11 && _day > 30 || _day < 1) {
-		std::cout << "Ошибка! В этом месяце не может быть больше 30 дней! Повторите попытку: ";
-		_day = ValidUserInput();
+	if (_month == 4 || _month == 6 || _month == 9 || _month == 11) {
+		while (_day > 30 || _day < 1) {
+			std::cout << "Ошибка! В этом месяце не может быть больше 30 дней! Повторите попытку: ";
+			_day = ValidUserInput();
+		}
 	}
 
 	if (_year % 4 != 0 && _month == 2) {

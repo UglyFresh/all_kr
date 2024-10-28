@@ -42,17 +42,18 @@ void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date,
 	}
 	else {
 		for (const auto& file : files_info) {
-			log_file << "Имя файла: " << file.get_file_name()
-				<< "\nРазмер файла: " << file.get_file_size()
+			log_file << "Имя файла: " << file.get_file_name() << ","
+				<< "\nРазмер файла: " << file.get_file_size() << ","
 				<< "\nДата создания файла: ";
 			for (const auto& date : _date) {
 				log_file << date.get_day() << '.'
 					<< date.get_month() << '.'
-					<< date.get_year();
+					<< date.get_year() << ",";
+				_date.erase(_date.begin());
+				break;
 			}
 			log_file << "\nКоличество обращений к файлу: "
-				<< file.get_number_of_file_accesses() << "\n";
-			
+				<< file.get_number_of_file_accesses() << ";" << "\n";
 		}
 
 		std::cout << "Данные успешно сохранены в файл:\n" << file_name;
@@ -84,13 +85,13 @@ void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, st
 	else {
 		std::string line;
 		Files file;
-		Date date;
+		Date date{};
 
-		while (std::getline(dump_file, line)) {
+		while (std::getline(dump_file, line, ';')) {
 			if (line.empty()) { continue; }
 			std::stringstream str(line);
 			std::string point;
-			while (std::getline(str, point)) {
+			while (std::getline(str, point, ',')) {
 				if (point.find("Имя файла:") != std::string::npos) {
 					file.set_file_name(point.substr(point.find(":") + 1));
 				}
@@ -105,30 +106,16 @@ void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, st
 				}
 				if (point.find("Дата создания файла:") != std::string::npos) {
 					std::string day_str = point.substr(point.find(":") + 1, point.find_first_of(".") - 1);
-					try {
-						int _day = std::stoi(day_str);
-						date.set_day(_day);
-					}
-					catch (std::invalid_argument&) {
-						std::cout << "Ошибка! Некорректный день!\n";
-					}
 					std::string month_str = point.substr(point.find_first_of(".") + 1, point.find_last_of(".") - 1);
-					try {
-						int _month = std::stoi(month_str);
-						date.set_month(_month);
-					}
-					catch (std::invalid_argument&) {
-						std::cout << "Ошибка! Некорректный месяц!\n";
-					}
 					std::string year_str = point.substr(point.find_last_of(".") + 1);
 					try {
-						int _year = std::stoi(year_str);
-						date.set_year(_year);
+						date.set_day(std::stoi(day_str));
+						date.set_month(std::stoi(month_str));
+						date.set_year(std::stoi(year_str));
 					}
 					catch (std::invalid_argument&) {
-						std::cout << "Ошибка! Некорректный год!\n";
+						std::cout << "Ошибка! Некорректная дата!\n";
 					}
-					_date.push_back(date);
 				}
 				if (point.find("Количество обращений к файлу:") != std::string::npos) {
 					std::string accesses_str = point.substr(point.find(":") + 1);
@@ -140,8 +127,10 @@ void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, st
 					}
 				}
 			}
+			_date.push_back(date);
+			files_info.push_back(file);
 		}
-		files_info.push_back(file);
+		dump_file.close();
 	}
 
 }

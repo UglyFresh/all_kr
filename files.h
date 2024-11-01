@@ -26,6 +26,10 @@ public:
 	void set_month(const int& new_month) { month = new_month; }
 	void set_year(const int& new_year) { year = new_year; }
 
+	void ShowDate() {
+		std::cout << day << "." << month << "." << year << "\n";
+	}
+
 	~Date() = default;
 
 };
@@ -54,21 +58,12 @@ public:
 	void set_date_of_creation_file(const Date& new_date_of_creation_file) { date_of_creation_file = new_date_of_creation_file; }
 	void set_number_of_file_accesses(const int& new_number_of_file_accesses) { number_of_file_accesses = new_number_of_file_accesses; }
 
-	void Show(std::vector <Files> files_info, std::vector <Date>& _date) {
-		for (const auto& file : files_info) {
-			std::cout << "Имя файла: " << file.get_file_name() << ","
-				<< "\nРазмер файла: " << file.get_file_size() << ","
-				<< "\nДата создания файла: ";
-			for (const auto& date : _date) {
-				std::cout << date.get_day() << '.'
-					<< date.get_month() << '.'
-					<< date.get_year() << ",";
-				_date.erase(_date.begin());
-				break;
-			}
-			std::cout << "\nКоличество обращений к файлу: "
-				<< file.get_number_of_file_accesses() << ";" << "\n";
-		}
+	void ShowFiles() {
+		std::cout << "Имя файла: " << file_name << "\n"
+			<< "Размер файла: " << file_size << "\n"
+			<< "Дата создания: "; 
+		date_of_creation_file.ShowDate();
+		std::cout << "Количество  обращений: " << get_number_of_file_accesses << "\n";
 	}
 
 	~Files() = default;

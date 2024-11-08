@@ -26,14 +26,14 @@ Date ValidDateInput(std::vector <Date>& _date) {
 		_year = ValidUserInput();
 	}
 
-	std::cout << "\n¬ведите мес€ц: ";
+	std::cout << "¬ведите мес€ц: ";
 	_month = ValidUserInput();
 	while (_month < 1 || _month > 12) {
 		std::cout << "ќшибка! Ќекорректный мес€ц! ѕовторите попытку: ";
 		_month = ValidUserInput();
 	}
 
-	std::cout << "\n¬ведите день: ";
+	std::cout << "¬ведите день: ";
 	_day = ValidUserInput();
 
 	if (_year % 4 == 0 && _month == 2) {

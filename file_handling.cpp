@@ -7,20 +7,20 @@ void InputFilesInfo(std::vector <Files>& file_info, std::vector <Date>& _date) {
 	int _num_of_accesses;
 	Date _date_of_creation;
 
-	std::cout << "Введите имя файла: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РёРјСЏ С„Р°Р№Р»Р°: ";
 	std::cin >> _name;
-	std::cout << "Введите размер файла: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°: ";
 	_size = ValidUserInput();
 	while (_size <= 0) {
-		std::cout << "Ошибка! Размер файла должен быть больше нуля! Пвторите попыттку: ";
+		std::cout << "РћС€РёР±РєР°! Р Р°Р·РјРµСЂ С„Р°Р№Р»Р° РґРѕР»Р¶РµРЅ Р±С‹С‚СЊ Р±РѕР»СЊС€Рµ РЅСѓР»СЏ! РџРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚С‚РєСѓ: ";
 		_size = ValidUserInput();
 	}
-	std::cout << "Введите дату создания файла: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РґР°С‚Сѓ СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р°: ";
 	_date_of_creation = ValidDateInput(_date);
-	std::cout << "Введите количество обращений к файлу: ";
+	std::cout << "Р’РІРµРґРёС‚Рµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№ Рє С„Р°Р№Р»Сѓ: ";
 	_num_of_accesses = ValidUserInput();
 	while (_num_of_accesses < 0) {
-		std::cout << "Ошибка! Количество обращений к файду не может быть отрицателльным! Повторите попытку: ";
+		std::cout << "РћС€РёР±РєР°! РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№ Рє С„Р°Р№РґСѓ РЅРµ РјРѕР¶РµС‚ Р±С‹С‚СЊ РѕС‚СЂРёС†Р°С‚РµР»Р»СЊРЅС‹Рј! РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ: ";
 		_num_of_accesses = ValidUserInput();
 	}
 
@@ -31,20 +31,20 @@ void InputFilesInfo(std::vector <Files>& file_info, std::vector <Date>& _date) {
 void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date, std::string& file_name) {
 
 	while (ValidFileName(file_name)) {
-		std::cout << "Ошибка! Имя файла зарезервированно! Повторите попытку: ";
+		std::cout << "РћС€РёР±РєР°! РРјСЏ С„Р°Р№Р»Р° Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅРѕ! РџРѕРІС‚РѕСЂРёС‚Рµ РїРѕРїС‹С‚РєСѓ: ";
 		std::cin >> file_name;
 	}
 
 	std::ofstream log_file(file_name);
 
 	if (!log_file.is_open()) {
-		std::cout << "Ошибка открытия файла!";
+		std::cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!";
 	}
 	else {
 		for (const auto& file : files_info) {
-			log_file << "Имя файла: " << file.get_file_name() << ","
-				<< "\nРазмер файла: " << file.get_file_size() << ","
-				<< "\nДата создания файла: ";
+			log_file << "\nРРјСЏ С„Р°Р№Р»Р°: " << file.get_file_name() << ","
+				<< "\nР Р°Р·РјРµСЂ С„Р°Р№Р»Р°: " << file.get_file_size() << ","
+				<< "\nР”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р°: ";
 			for (const auto& date : _date) {
 				log_file << date.get_day() << '.'
 					<< date.get_month() << '.'
@@ -52,11 +52,11 @@ void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date,
 				_date.erase(_date.begin());
 				break;
 			}
-			log_file << "\nКоличество обращений к файлу: "
-				<< file.get_number_of_file_accesses() << ";" << "\n";
+			log_file << "\nРљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№ Рє С„Р°Р№Р»Сѓ: "
+				<< file.get_number_of_file_accesses() << ";";
 		}
 
-		std::cout << "Данные успешно сохранены в файл:\n" << file_name;
+		std::cout << "Р”Р°РЅРЅС‹Рµ СѓСЃРїРµС€РЅРѕ СЃРѕС…СЂР°РЅРµРЅС‹ РІ С„Р°Р№Р»:\n" << file_name;
 	}
 
 	log_file.close();
@@ -68,10 +68,10 @@ bool IsFileEmpty(std::string file_name) {
 	std::ifstream file(file_name);
 
 	if (file.peek() == EOF) {
-		return false;
+		return true;
 	}
 	else {
-		return true;
+		return false;
 	}
 }
 
@@ -80,7 +80,7 @@ void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, st
 	std::ifstream dump_file(file_name);
 
 	if (!dump_file.is_open()) {
-		std::cout << "Ошибка открытия файла!";
+		std::cout << "РћС€РёР±РєР° РѕС‚РєСЂС‹С‚РёСЏ С„Р°Р№Р»Р°!";
 	}
 	else {
 		std::string line;
@@ -92,19 +92,19 @@ void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, st
 			std::stringstream str(line);
 			std::string point;
 			while (std::getline(str, point, ',')) {
-				if (point.find("Имя файла:") != std::string::npos) {
+				if (point.find("РРјСЏ С„Р°Р№Р»Р°:") != std::string::npos) {
 					file.set_file_name(point.substr(point.find(":") + 1));
 				}
-				if (point.find("Размер файла:") != std::string::npos) {
+				if (point.find("Р Р°Р·РјРµСЂ С„Р°Р№Р»Р°:") != std::string::npos) {
 					std::string size_str = point.substr(point.find(":") + 1);
 					try {
 						file.set_file_size(std::stoi(size_str));
 					}
 					catch (std::invalid_argument&) {
-						std::cout << "Ошибка! Некорректный размер файла!\n";
+						std::cout << "РћС€РёР±РєР°! РќРµРєРѕСЂСЂРµРєС‚РЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°!\n";
 					}
 				}
-				if (point.find("Дата создания файла:") != std::string::npos) {
+				if (point.find("Р”Р°С‚Р° СЃРѕР·РґР°РЅРёСЏ С„Р°Р№Р»Р°:") != std::string::npos) {
 					std::string day_str = point.substr(point.find(":") + 1, point.find_first_of(".") - 1);
 					std::string month_str = point.substr(point.find_first_of(".") + 1, point.find_last_of(".") - 1);
 					std::string year_str = point.substr(point.find_last_of(".") + 1);
@@ -114,16 +114,16 @@ void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, st
 						date.set_year(std::stoi(year_str));
 					}
 					catch (std::invalid_argument&) {
-						std::cout << "Ошибка! Некорректная дата!\n";
+						std::cout << "РћС€РёР±РєР°! РќРµРєРѕСЂСЂРµРєС‚РЅР°СЏ РґР°С‚Р°!\n";
 					}
 				}
-				if (point.find("Количество обращений к файлу:") != std::string::npos) {
+				if (point.find("РљРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№ Рє С„Р°Р№Р»Сѓ:") != std::string::npos) {
 					std::string accesses_str = point.substr(point.find(":") + 1);
 					try {
 						file.set_number_of_file_accesses(std::stoi(accesses_str));
 					}
 					catch (std::invalid_argument&) {
-						std::cout << "Ошибка! Некорректное количество обращений к файлу!\n";
+						std::cout << "РћС€РёР±РєР°! РќРµРєРѕСЂСЂРµРєС‚РЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№ Рє С„Р°Р№Р»Сѓ!\n";
 					}
 				}
 			}

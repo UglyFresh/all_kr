@@ -1,21 +1,21 @@
 #pragma once
 #include "file_handling.h"
 /// <summary>
-/// Сортировка в алфавитном порядке
+/// РЎРѕСЂС‚РёСЂРѕРІРєР° РІ Р°Р»С„Р°РІРёС‚РЅРѕРј РїРѕСЂСЏРґРєРµ
 /// </summary>
-/// <param name="files_info">Данные из файла</param>
-/// <param name="sorted_files_info">Отсортированные данные</param>
-void SortByABC(std::vector <Files> files_info, std::vector <Files> sorted_files_info);
-/// <summary>///сортировка относительно указанного размера
+/// <param name="files_info">Р”Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°</param>
+/// <param name="sorted_files_info">РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</param>
+void SortByABC(std::vector <Files> files_info, std::vector <Files>& sorted_files_info);
+/// <summary>///СЃРѕСЂС‚РёСЂРѕРІРєР° РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ СЂР°Р·РјРµСЂР°
 /// </summary>
-/// /// <param name="files_info">Данные из файла</param>
-/// /// <param name="sorted_files_info">Отсортированные данные</param>
-/// /// <param name="min_size">Минимальный размер файла</param>
-void SortBySize(std::vector <Files> files_info, std::vector <Files> sorted_files_info, int min_size);
+/// /// <param name="files_info">Р”Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°</param>
+/// /// <param name="sorted_files_info">РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</param>
+/// /// <param name="min_size">РњРёРЅРёРјР°Р»СЊРЅС‹Р№ СЂР°Р·РјРµСЂ С„Р°Р№Р»Р°</param>
+void SortBySize(std::vector <Files> files_info, std::vector <Files>& sorted_files_info, int min_size);
 /// <summary>
-/// Сортировка относительно указанного количества обращений
+/// РЎРѕСЂС‚РёСЂРѕРІРєР° РѕС‚РЅРѕСЃРёС‚РµР»СЊРЅРѕ СѓРєР°Р·Р°РЅРЅРѕРіРѕ РєРѕР»РёС‡РµСЃС‚РІР° РѕР±СЂР°С‰РµРЅРёР№
 /// /// </summary>
-/// /// <param name="files_info"> Данные из файла</param>
-/// /// <param name="sorted_files_info"> Отсортированные данные</param>
-/// /// <param name="min_accesses"> Минимальное количество обращений </param>
-void SortByAccesses(std::vector <Files> files_info, std::vector <Files> sorted_files_info, int min_accesses);
+/// /// <param name="files_info"> Р”Р°РЅРЅС‹Рµ РёР· С„Р°Р№Р»Р°</param>
+/// /// <param name="sorted_files_info"> РћС‚СЃРѕСЂС‚РёСЂРѕРІР°РЅРЅС‹Рµ РґР°РЅРЅС‹Рµ</param>
+/// /// <param name="min_accesses"> РњРёРЅРёРјР°Р»СЊРЅРѕРµ РєРѕР»РёС‡РµСЃС‚РІРѕ РѕР±СЂР°С‰РµРЅРёР№ </param>
+void SortByAccesses(std::vector <Files> files_info, std::vector <Files>& sorted_files_info, int min_accesses);

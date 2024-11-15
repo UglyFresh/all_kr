@@ -1,11 +1,11 @@
 #pragma once
 #include "validation.h"
 
-/// <summary> Ввод данных о файле </summary>/// <param name="files_info"> Вектор на основе класса </param>
+/// <summary> Р’РІРѕРґ РґР°РЅРЅС‹С… Рѕ С„Р°Р№Р»Рµ </summary>/// <param name="files_info"> Р’РµРєС‚РѕСЂ РЅР° РѕСЃРЅРѕРІРµ РєР»Р°СЃСЃР° </param>
 void InputFilesInfo (std::vector <Files>& files_info, std::vector <Date>& _date);
-/// <summary>Загрузка данных в файл </summary>/// <param name="files_info">Вектор на основе класса Files</param>/// <param name="_date">Вектор на основе класса Date</param>
+/// <summary>Р—Р°РіСЂСѓР·РєР° РґР°РЅРЅС‹С… РІ С„Р°Р№Р» </summary>/// <param name="files_info">Р’РµРєС‚РѕСЂ РЅР° РѕСЃРЅРѕРІРµ РєР»Р°СЃСЃР° Files</param>/// <param name="_date">Р’РµРєС‚РѕСЂ РЅР° РѕСЃРЅРѕРІРµ РєР»Р°СЃСЃР° Date</param>
 void DownloadFileInfo(std::vector <Files> files_info, std::vector <Date>& _date, std::string& file_name);
-/// <summary>Прповерка файла на пустоту </summary>/// <param name="file_name">Путь к файлу</param>/// <returns>Истинна или Ложь</returns>
+/// <summary>РџСЂРїРѕРІРµСЂРєР° С„Р°Р№Р»Р° РЅР° РїСѓСЃС‚РѕС‚Сѓ </summary>/// <param name="file_name">РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ</param>/// <returns>РСЃС‚РёРЅРЅР° РёР»Рё Р›РѕР¶СЊ</returns>
 bool IsFileEmpty(std::string file_name);
-/// <summary>Выгрузка данных в файл </summary>/// <param name="files_info"> Вектор на основе класса Files </param>/// <param name="_date"> Вектор на основе класса Date </param>/// <param name="file_name"> Путь к файлу </param>
+/// <summary>Р’С‹РіСЂСѓР·РєР° РґР°РЅРЅС‹С… РІ С„Р°Р№Р» </summary>/// <param name="files_info"> Р’РµРєС‚РѕСЂ РЅР° РѕСЃРЅРѕРІРµ РєР»Р°СЃСЃР° Files </param>/// <param name="_date"> Р’РµРєС‚РѕСЂ РЅР° РѕСЃРЅРѕРІРµ РєР»Р°СЃСЃР° Date </param>/// <param name="file_name"> РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ </param>
 void DumpFileInfo(std::vector <Files>& files_info, std::vector <Date>& _date, std::string& file_name);

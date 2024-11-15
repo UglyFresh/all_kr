@@ -1,8 +1,8 @@
 #include "files.h"
 
-/// <summary> Прроверка пользовательского ввода </summary>/// <returns>Пользовательский ввод</returns>
+/// <summary> РџСЂСЂРѕРІРµСЂРєР° РїРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРѕРіРѕ РІРІРѕРґР° </summary>/// <returns>РџРѕР»СЊР·РѕРІР°С‚РµР»СЊСЃРєРёР№ РІРІРѕРґ</returns>
 int ValidUserInput();
-/// <summary> Проверка корректности даты </summary>/// <returns>Экземпляр класса Date</returns>
+/// <summary> РџСЂРѕРІРµСЂРєР° РєРѕСЂСЂРµРєС‚РЅРѕСЃС‚Рё РґР°С‚С‹ </summary>/// <returns>Р­РєР·РµРјРїР»СЏСЂ РєР»Р°СЃСЃР° Date</returns>
 Date ValidDateInput(std::vector <Date>& _date);
-/// <summary> Проверка имении файла на зарезервированность </summary>/// <param name="file_name"> Путь к файлу </param>/// <returns> Истинна или Ложь </returns>
+/// <summary> РџСЂРѕРІРµСЂРєР° РёРјРµРЅРёРё С„Р°Р№Р»Р° РЅР° Р·Р°СЂРµР·РµСЂРІРёСЂРѕРІР°РЅРЅРѕСЃС‚СЊ </summary>/// <param name="file_name"> РџСѓС‚СЊ Рє С„Р°Р№Р»Сѓ </param>/// <returns> РСЃС‚РёРЅРЅР° РёР»Рё Р›РѕР¶СЊ </returns>
 bool ValidFileName(std::string file_name);

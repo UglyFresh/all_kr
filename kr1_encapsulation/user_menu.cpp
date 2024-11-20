@@ -22,8 +22,6 @@ enum FILTER_CHOICE {ABC_SORT = 1, SIZE_SORT, ACCESSES_SORT, MENU};
 
 int main() {
 
-	setlocale(LC_ALL, "RU");
-
 	Files _file;
 	const int begin_choice = 1, finish_choice = 4;
 	int choice = 0;

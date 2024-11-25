@@ -1,5 +1,6 @@
 #pragma once
-#include "person.h"
+#include <iostream>
+#include <vector>
 
 /// <summary>
 /// Проверка корректноси пользовательского ввода

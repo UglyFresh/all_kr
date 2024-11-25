@@ -1,5 +1,17 @@
 #include "file_handling.h"
 
+bool IsFileEmpty(std::string file_name) {
+
+	std::ifstream file(file_name);
+
+	if (file.peek() == EOF) {
+		return true;
+	}
+	else {
+		return false;
+	}
+}
+
 void DownloadData(std::vector<std::unique_ptr<Person>>& person_info) {
 
 	std::string file_location;

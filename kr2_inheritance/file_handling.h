@@ -13,3 +13,8 @@ bool IsFileEmpty(std::string file_name);
 /// </summary>
 /// <param name="person_info">- вектор содержащий данные </param>
 void DownloadData(std::vector<std::unique_ptr<Person>>& person_info);
+
+/// <summary>
+/// Выгрузка данных из файла 
+/// </summary>
+void DumpData();

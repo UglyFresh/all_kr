@@ -1,5 +1,6 @@
 #pragma once
 #include "validation.h"
+#include <fstream>
 
 
 /// <summary>
@@ -25,13 +26,20 @@ public:
 	void set_gender(const std::string& new_gender) { gender = new_gender; }
 	void set_address(const std::string& new_address) { address = new_address; }
 
+	/// <summary>
+	/// Демонстрация данных
+	/// </summary>
 	virtual void Show() const {
-		std::cout << "Личность:" << "\n"
+		std::cout << "Личность|" << "\n"
 			<< "Фамилия: " << get_surname() << ',' << "\n"
 			<< "Пол: " << get_gender() << ',' << "\n"
 			<< "Адрес: " << get_address() << ';' << std::endl;
 	}
 
+	/// <summary>
+	/// Ввод данных через консоль
+	/// </summary>
+	/// <returns>Вектор заполненый данными</returns>
 	virtual std::vector<std::unique_ptr<Person>> InputData() {
 
 		std::vector <std::unique_ptr<Person>> person_info;
@@ -76,8 +84,11 @@ public:
 	void set_department(const std::string new_department) { department = new_department; }
 	void set_subject(const std::string new_subject) { subject = new_subject; }
 
+	/// <summary>
+	/// Демонстрация данных
+	/// </summary>
 	void Show() const override {
-		std::cout << "Сотрудник университета:" << "\n"
+		std::cout << "Сотрудник университета|" << "\n"
 			<< "Фамилия: " << get_surname() << ',' << "\n"
 			<< "Пол: " << get_gender() << ',' << "\n"
 			<< "Адрес: " << get_address() << ',' << "\n"
@@ -85,6 +96,10 @@ public:
 			<< "Должность" << get_subject() << ';' << std::endl;
 	}
 
+	/// <summary>
+	/// Ввод данных через консоль
+	/// </summary>
+	/// <returns>Вектор заполненый данными</returns>
 	virtual std::vector<std::unique_ptr<Person>> InputData() override {
 
 		std::vector <std::unique_ptr<Person>> person_info;
@@ -105,6 +120,11 @@ public:
 		std::cin >> subject;
 
 		person_info.push_back(std::make_unique<Employee>(surname, gender, address, department, subject));
+
+		for (auto& person : person_info) {
+			person->Show();
+		}
+
 		return person_info;
 	}
 

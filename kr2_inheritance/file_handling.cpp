@@ -25,7 +25,18 @@ void DownloadData(std::vector<std::unique_ptr<Person>>& person_info) {
 		std::cout << "Ошибка! Недопустимое имя файла! Повторите попытку: ";
 		std::cin >> file_location;
 	}
-
+	
+	while (!IsFileEmpty(file_location)) {
+		std::cout << "Файл содержит данные! Желаете перезаписать его? 1- Да, 2 - Нет ";
+		int choice = ValidChoice(1, 2);
+		if (choice == 2) {
+			std::cout << "Введите путь к новому файлу для сохранения: ";
+			std::cin >> file_location;
+		}
+		else {
+			break;
+		}
+	}
 	std::ofstream log_file(file_location);
 	if (!log_file.is_open()) {
 		std::cout << "Ошибка открытия файла!";
@@ -52,6 +63,7 @@ void DownloadData(std::vector<std::unique_ptr<Person>>& person_info) {
 		log_file.close();
 		person_info.clear();
 	}
+
 
 }
 

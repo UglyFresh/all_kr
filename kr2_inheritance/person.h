@@ -40,9 +40,7 @@ public:
 	/// Ввод данных через консоль
 	/// </summary>
 	/// <returns>Вектор заполненый данными</returns>
-	virtual std::vector<std::unique_ptr<Person>> InputData() {
-
-		std::vector <std::unique_ptr<Person>> person_info;
+	virtual void InputData(std::vector<std::unique_ptr<Person>>& person_info) {
 
 		std::cout << "Введите фамилию: ";
 		std::cin >> surname;
@@ -56,7 +54,7 @@ public:
 		std::cin >> address;
 
 		person_info.push_back(std::make_unique<Person>(surname, gender, address));
-		return person_info;
+
 	}
 
 	virtual ~Person() {}
@@ -100,9 +98,7 @@ public:
 	/// Ввод данных через консоль
 	/// </summary>
 	/// <returns>Вектор заполненый данными</returns>
-	virtual std::vector<std::unique_ptr<Person>> InputData() override {
-
-		std::vector <std::unique_ptr<Person>> person_info;
+	virtual void InputData(std::vector<std::unique_ptr<Person>>& person_info) override {
 
 		std::cout << "Введите фамилию: ";
 		std::cin >> surname;
@@ -121,11 +117,6 @@ public:
 
 		person_info.push_back(std::make_unique<Employee>(surname, gender, address, department, subject));
 
-		for (auto& person : person_info) {
-			person->Show();
-		}
-
-		return person_info;
 	}
 
 	virtual ~Employee() override {};
